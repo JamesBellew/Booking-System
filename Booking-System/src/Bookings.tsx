@@ -5,14 +5,22 @@ const Bookings: React.FC = ()=>{
     "Aditya", "Arya"]
 let string = JSON.stringify(students)
 localStorage.setItem("students", string)
-     const [booking,updateBookings] = useState([localStorage.getItem('bookings')]);
-    console.log(booking);
-    
+     const [bookings,updateBookings] = useState<null>([localStorage.getItem('bookings')]);
+    console.log(bookings);
+    // const bookings = localStorage.getItem('bookings');
+    const deleteBooking = (bookings:any) =>{
+localStorage.clear();
+updateBookings(null);
+    }
 return(
     <>
 
     <h4>Your Bookings</h4>
-    
+    {bookings &&
+    <li>{bookings} <button onClick={()=>deleteBooking(bookings)}>Delete</button></li>
+
+}
+    {/* {toLocaleString("en-US", options)} */}
     </>
 )
 }

@@ -64,6 +64,8 @@ updateMsg(false)
 
 }
 const userNewBookingHandler = () =>{
+    //set to local storage
+    localStorage.setItem('bookings',timeSelect + " " + value.toLocaleString("en-US", options))
     console.log('cliked');
     updateMsg(false)
     updateTimePicker(false)
@@ -74,7 +76,7 @@ const userNewBookingHandler = () =>{
         <>
         <div>
             {!showTimePicker &&
-        <Calendar onChange={onChange} value={value} onClickDay={userSelectedDate}/>
+        <Calendar minDate={new Date()}  onChange={onChange} value={value} onClickDay={userSelectedDate}/>
             }
       </div>
       {
@@ -100,7 +102,8 @@ const userNewBookingHandler = () =>{
 
 {showConfirmMsg &&
 <>
-<h3 className="text-red-700 underline text-3xl font-bold underline">New Booking For {timeSelect} on {value.toLocaleString("en-US", options)}</h3>
+<h3 className="text-red-700 underline text-3xl font-bold underline">New Booking For {timeSelect} on
+ {value.toLocaleString("en-US", options)}</h3>
 
 <br></br>
 <div>
