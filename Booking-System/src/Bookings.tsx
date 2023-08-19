@@ -5,7 +5,7 @@ const Bookings: React.FC = ()=>{
     "Aditya", "Arya"]
 let string = JSON.stringify(students)
 localStorage.setItem("students", string)
-     const [bookings,updateBookings] = useState<null>([localStorage.getItem('bookings')]);
+     const [bookings,updateBookings] = useState([localStorage.getItem('bookings')]);
     console.log(bookings);
     // const bookings = localStorage.getItem('bookings');
     const deleteBooking = (bookings:any) =>{
