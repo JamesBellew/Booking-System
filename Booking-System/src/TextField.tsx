@@ -44,7 +44,9 @@ const NewBookingClickedHandler = (time:string | number | any) =>{
 }
 
 const FirstTimeTable = timesArray1.map((number) =>
+ number != "10:00" &&
   <button onClick={() => NewBookingClickedHandler({number})}>{number}</button>
+  
 );
 const SecondTimeTable = timesArray2.map((number) =>
   <button>{number}</button>
@@ -64,8 +66,36 @@ updateMsg(false)
 
 }
 const userNewBookingHandler = () =>{
+    const existingBookingsJSON = localStorage.getItem('bookings');
+let existingBookings = [];
+
+// Convert existing bookings JSON to an array if it exists
+if (existingBookingsJSON) {
+  existingBookings = JSON.parse(existingBookingsJSON);
+}
+
+// New booking to add
+const newBooking = {
+  day: value,
+  time: timeSelect
+};
+
+// Add the new booking to the existing bookings array
+existingBookings.push(newBooking);
+
+// Convert the updated bookings array to JSON
+const updatedBookingsJSON = JSON.stringify(existingBookings);
+
+// Save the updated JSON back to localStorage
+localStorage.setItem('bookings', updatedBookingsJSON);
+    // const booking = {
+    //     day: value,
+    //     time: timeSelect
+    //   };
+    //   const bookingJSON = JSON.stringify(booking);
+    //   localStorage.setItem('booking', bookingJSON);
     //set to local storage
-    localStorage.setItem('bookings',timeSelect + " " + value.toLocaleString("en-US", options))
+    // localStorage.setItem('bookings',timeSelect + " " + value.toLocaleString("en-US", options))
     console.log('cliked');
     updateMsg(false)
     updateTimePicker(false)
