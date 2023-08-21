@@ -12,7 +12,8 @@ interface Props{
     i:number;
     fn?: ()=> void;
 }
-
+const savedBookingsJSON = localStorage.getItem('bookings') as string;
+const savedBookings = JSON.parse(savedBookingsJSON);
 
 
 
@@ -43,18 +44,30 @@ const NewBookingClickedHandler = (time:string | number | any) =>{
      updateTimeSelected(time.number)
 }
 
-const FirstTimeTable = timesArray1.map((number) =>
- number != "10:00" &&
-  <button onClick={() => NewBookingClickedHandler({number})}>{number}</button>
-  
-);
+const FirstTimeTable = timesArray1.map((number) => {
+    console.log('in her ebitch');
+
+    
+    // if(savedBookings !=null){
+
+   
+    // if (number !== savedBookings[0].time) {
+      return (
+        <button onClick={() => NewBookingClickedHandler({ number })} key={number}>
+          {number}
+        </button>
+      );
+//     } else {
+//       return null; // Render nothing for "10:00"
+//     }
+   });
 const SecondTimeTable = timesArray2.map((number) =>
   <button>{number}</button>
 );
 
     const options = { weekday: 'long',  month: 'short', day: 'numeric' };
     const [count,setCount] = useState<number | null>(5);
-    const [value, onChange] = useState<Value>(new Date());
+    const [value, onChange] = useState<Value | null>(new Date());
     const [showTimePicker,updateTimePicker] = useState<boolean>(false);
 const userSelectedDate = () =>{
     updateTimePicker(true)
@@ -88,14 +101,6 @@ const updatedBookingsJSON = JSON.stringify(existingBookings);
 
 // Save the updated JSON back to localStorage
 localStorage.setItem('bookings', updatedBookingsJSON);
-    // const booking = {
-    //     day: value,
-    //     time: timeSelect
-    //   };
-    //   const bookingJSON = JSON.stringify(booking);
-    //   localStorage.setItem('booking', bookingJSON);
-    //set to local storage
-    // localStorage.setItem('bookings',timeSelect + " " + value.toLocaleString("en-US", options))
     console.log('cliked');
     updateMsg(false)
     updateTimePicker(false)

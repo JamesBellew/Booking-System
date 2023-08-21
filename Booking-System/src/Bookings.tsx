@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 
 const Bookings: React.FC = ()=>{
-    let students = ["Vikas", "Utsav", "Pranjal", 
-    "Aditya", "Arya"]
-let string = JSON.stringify(students)
-localStorage.setItem("students", string)
+
 
 const savedBookingsJSON = localStorage.getItem('bookings');
 const savedBookings = JSON.parse(savedBookingsJSON);
