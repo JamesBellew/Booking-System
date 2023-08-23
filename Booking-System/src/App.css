@@ -30,6 +30,9 @@
     transform: rotate(360deg);
   }
 }
+.test{
+  color: red;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
