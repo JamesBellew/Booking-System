@@ -19,6 +19,7 @@ return(
     <>
 
     <h4>Your Bookings</h4>
+    {/* I want to get rid of this section */}
     {savedBookings &&
     <li>hel<button onClick={()=>deleteBooking(bookings)}>Delete</button></li>
 
