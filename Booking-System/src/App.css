@@ -36,6 +36,9 @@
     animation: logo-spin infinite 20s linear;
   }
 }
+.whynot{
+  color: red;
+}
 
 .card {
   padding: 2em;

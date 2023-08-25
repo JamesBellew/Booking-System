@@ -46,6 +46,7 @@ const NewBookingClickedHandler = (time:string | number | any) =>{
 
 const FirstTimeTable = timesArray1.map((number) => {
     console.log('in her ebitch');
+    console.log('why no work ');
 
     
     // if(savedBookings !=null){
