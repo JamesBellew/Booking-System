@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useState,useRef } from 'react'
 import Calendar from 'react-calendar';
 import Bookings from "./Bookings";
@@ -14,7 +14,7 @@ interface Props{
 }
 const savedBookingsJSON = localStorage.getItem('bookings') as string;
 const savedBookings = JSON.parse(savedBookingsJSON);
-
+const TimeHai = savedBookings[0].time;
 
 
 export const TextField: React.FC<Props> = ()=>{
@@ -38,6 +38,7 @@ export const TextField: React.FC<Props> = ()=>{
     ]
     const [showConfirmMsg,updateMsg] = useState(false);
 const [timeSelect,updateTimeSelected] = useState<string | null | number>(null)
+const [daySelected,updatedDaySelected] = useState<string | null>(null);
 const NewBookingClickedHandler = (time:string | number | any) =>{
     console.log(time.number);
      updateMsg(true)
@@ -46,32 +47,48 @@ const NewBookingClickedHandler = (time:string | number | any) =>{
 
 const FirstTimeTable = timesArray1.map((number) => {
 
-    
-    // if(savedBookings !=null){
 
-   
-    // if (number !== savedBookings[0].time) {
-      return (
-        <button onClick={() => NewBookingClickedHandler({ number })} key={number}>
-          {number}
-        </button>
-      );
-//     } else {
-//       return null; // Render nothing for "10:00"
-//     }
+    if(daySelected == savedBookings[0].day){
+
+      console.log('we on the right day');
+      
+    }else{
+     console.log('no on this day');
+     
+    }
+
+    return (
+      <button onClick={() => NewBookingClickedHandler({ number })} key={number}>
+        {number}
+      </button>
+    );
+  
+  
+ 
    });
+
+
+
+
 const SecondTimeTable = timesArray2.map((number) =>
   <button>{number}</button>
 );
 
     const options = { weekday: 'long',  month: 'short', day: 'numeric' };
-    const [count,setCount] = useState<number | null>(5);
     const [value, onChange] = useState<Value | null>(new Date());
     const [showTimePicker,updateTimePicker] = useState<boolean>(false);
-const userSelectedDate = () =>{
-    updateTimePicker(true)
-    
-}
+    const userSelectedDate = () =>{ 
+    updateTimePicker(true) 
+    }
+
+useEffect(() => {
+
+console.log(value.toLocaleString("en-US", options));
+updatedDaySelected(value.toLocaleString("en-US", options));
+console.log(daySelected + 'haiiiiii');
+
+
+});
 const userSelectOtherDate = () =>{
 updateTimePicker(false)
 updateMsg(false)
@@ -88,7 +105,7 @@ if (existingBookingsJSON) {
 
 // New booking to add
 const newBooking = {
-  day: value,
+  day: value.toLocaleString("en-US", options),
   time: timeSelect
 };
 

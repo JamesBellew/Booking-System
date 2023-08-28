@@ -6,17 +6,7 @@ const Bookings: React.FC = ()=>{
 const [savedBookingsJSON,updateBookings1] = useState(localStorage.getItem('bookings'));
 const [savedBookings,updateSavedBookings] = useState(JSON.parse(savedBookingsJSON));
      const [bookings,updateBookings] = useState<string | null| object>([localStorage.getItem('bookings')]);
-     const formatDate = (date:any) => {
-        return new Date(date).toLocaleDateString();
-      };
-    
-      const formatTime = (time:any) => {
-        return new Date(time).toLocaleTimeString();
-      };
-//     const deleteBooking = (bookings:any) =>{
-// localStorage.clear();
-// updateBookings(null);
-//     }
+
 const deleteBooking = (bookingToDelete: any) => {
   // Filter out the booking to delete
   const updatedBookings = savedBookings.filter(booking => (
@@ -40,8 +30,8 @@ return(
     )}
 
     {savedBookings &&  savedBookings.map((booking:any, index:any) => (
-    <p key={index}>
-         {formatDate(booking.day) + " "} 
+    <p id="test" key={index}>
+         {booking.day + " "} 
       at  {booking.time + "    "}
         <button onClick={() => deleteBooking(booking)}>Delete</button>
     </p>

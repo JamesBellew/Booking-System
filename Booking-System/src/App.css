@@ -8,7 +8,12 @@
   padding: 2rem;
   text-align: center;
 }
-
+#test{
+  background-color: rgba(82, 82, 82, 0.17);
+  width: auto;
+  padding: 10px;
+  border-radius: 10px;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
