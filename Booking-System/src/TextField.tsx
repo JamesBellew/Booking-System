@@ -55,7 +55,7 @@ const FirstTimeTable = timesArray1.map((number) => {
     }
 
     return (
-      <button onClick={() => NewBookingClickedHandler({ number })} key={number}>
+      <button className="w-20 bg-indigo-700/10 hover:bg-indigo-700/50 transition-all border-none m-1 rounded" onClick={() => NewBookingClickedHandler({ number })} key={number}>
         {number}
       </button>
     );
@@ -68,7 +68,9 @@ const FirstTimeTable = timesArray1.map((number) => {
 
 
 const SecondTimeTable = timesArray2.map((number) =>
-  <button>{number}</button>
+<button className=" w-20 bg-indigo-700/10 hover:bg-indigo-700/50 transition-all border-none m-1 rounded" onClick={() => NewBookingClickedHandler({ number })} key={number}>
+{number}
+</button>
 );
 
     const options = { weekday: 'long',  month: 'short', day: 'numeric' };
@@ -134,7 +136,7 @@ localStorage.setItem('bookings', updatedBookingsJSON);
       <div>
         <br></br>
        
-<button onClick={userSelectOtherDate}>Select Different Date</button>
+<button className="bg-indigo-400 rounded text-stone-900" onClick={userSelectOtherDate}>Select Different Date</button>
 <br></br>
 
 <br></br>
@@ -150,12 +152,12 @@ localStorage.setItem('bookings', updatedBookingsJSON);
 
 {showConfirmMsg &&
 <>
-<h3 className="text-red-700 underline text-3xl font-bold underline">New Booking For {timeSelect} on
- {value.toLocaleString("en-US", options)}</h3>
+<h3 className="text-2xl font-semibold">New Booking For {timeSelect} on 
+ {" "+value.toLocaleString("en-US", options)}</h3>
 
 <br></br>
 <div>
-  <button onClick={userNewBookingHandler}>Book Now</button>  
+  <button className="bg-indigo-700 rounded" onClick={userNewBookingHandler}>Book Now</button>  
 </div>
 </>
 }

@@ -11,8 +11,14 @@ body {
 
 }
 .react-calendar { 
-  background-color: #fff;
-  color: #222;
+   width: 60%;
+   left: 20%;
+   position: relative;
+   margin-bottom: 10%;
+   margin-top: 10%;
+  max-width: 100%; 
+  background-color: #252729;
+  color: #e1e1e1;
   border-radius: 8px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
   font-family: Arial, Helvetica, sans-serif;
@@ -30,7 +36,7 @@ body {
   background-color: #f8f8fa;
  }
  .react-calendar__navigation button[disabled] {
-  background-color: #f0f0f0;
+  background-color: #252729;
  }
  abbr[title] {
   text-decoration: none;
