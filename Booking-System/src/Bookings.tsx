@@ -22,7 +22,7 @@ const deleteBooking = (bookingToDelete: any) => {
 
 
 return(
-  <div className="w-2/3 bg-slate-00/10 container mx-auto ">
+  <div className="w-96 bg-slate-00/10 container mx-auto ">
   {savedBookings && savedBookings.length > 0 ? (
       <h1 className="m-5">Your Bookings</h1>
     ) : (

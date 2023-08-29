@@ -46,32 +46,44 @@ const NewBookingClickedHandler = (time:string | number | any) =>{
 }
 
 const FirstTimeTable = timesArray1.map((number) => {
+  const matchingBooking = savedBookings.find((booking) => {
+    return daySelected === booking.day && number === booking.time;
+  });
+
+  const isBooked = matchingBooking !== undefined;
+
+  return (
+    <button
+      className={`w-20 border-none m-1 rounded ${isBooked ? 'line-through  text-gray-500' : 'bg-indigo-700/10 hover:bg-indigo-700/50 transition-all'}`}
+      onClick={() => isBooked ? null : NewBookingClickedHandler({ number })}
+      key={number}
+      disabled={isBooked}
+    >
+      {number}
+    </button>
+  );
+});
 
 
-    if(daySelected == savedBookings[0].day){
-      console.log('we on the right day');  
-    }else{
-     console.log('no on this day'); 
-    }
 
-    return (
-      <button className="w-20 bg-indigo-700/10 hover:bg-indigo-700/50 transition-all border-none m-1 rounded" onClick={() => NewBookingClickedHandler({ number })} key={number}>
-        {number}
-      </button>
-    );
-  
-  
- 
-   });
+const SecondTimeTable = timesArray2.map((number) =>{
+const matchingBooking = savedBookings.find((booking) => {
+  return daySelected === booking.day && number === booking.time;
+});
 
+const isBooked = matchingBooking !== undefined;
 
-
-
-const SecondTimeTable = timesArray2.map((number) =>
-<button className=" w-20 bg-indigo-700/10 hover:bg-indigo-700/50 transition-all border-none m-1 rounded" onClick={() => NewBookingClickedHandler({ number })} key={number}>
-{number}
-</button>
+return (
+  <button
+    className={`w-20 border-none m-1 rounded ${isBooked ? 'line-through  text-gray-500' : 'bg-indigo-700/10 hover:bg-indigo-700/50 transition-all'}`}
+    onClick={() => isBooked ? null : NewBookingClickedHandler({ number })}
+    key={number}
+    disabled={isBooked}
+  >
+    {number}
+  </button>
 );
+});
 
     const options = { weekday: 'long',  month: 'short', day: 'numeric' };
     const [value, onChange] = useState<Value | null>(new Date());
@@ -94,6 +106,8 @@ updateMsg(false)
 
 }
 const userNewBookingHandler = () =>{
+  console.log('fuckfuck');
+  
     const existingBookingsJSON = localStorage.getItem('bookings');
 let existingBookings = [];
 
@@ -133,19 +147,16 @@ localStorage.setItem('bookings', updatedBookingsJSON);
 
       showTimePicker &&
       <>
-      <div>
+      <div className="">
         <br></br>
        
-<button className="bg-indigo-400 rounded text-stone-900" onClick={userSelectOtherDate}>Select Different Date</button>
-<br></br>
+<button className="bg-indigo-400 rounded mt-[30vh] text-stone-900" onClick={userSelectOtherDate}>Select Different Date</button>
 
-<br></br>
-<br></br>
-      </div>
-      <div>
+     <br></br>
+     <br></br>
+     
 {FirstTimeTable}
-</div>
-<div>
+<br></br>
 {SecondTimeTable}
 </div>
 <br></br>
@@ -157,7 +168,7 @@ localStorage.setItem('bookings', updatedBookingsJSON);
 
 <br></br>
 <div>
-  <button className="bg-indigo-700 rounded" onClick={userNewBookingHandler}>Book Now</button>  
+  <button className="bg-indigo-700 cursor-pointer rounded" onClick={userNewBookingHandler}>Book Ndow</button>  
 </div>
 </>
 }
