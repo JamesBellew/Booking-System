@@ -22,22 +22,22 @@ const deleteBooking = (bookingToDelete: any) => {
 
 
 return(
-    <>
+  <div className="w-2/3 bg-slate-00/10 container mx-auto text-center">
   {savedBookings && savedBookings.length > 0 ? (
-      <h1>Your Bookings</h1>
+      <h1 className="m-5">Your Bookings</h1>
     ) : (
       <h1>No Bookings Yet</h1>
     )}
 
     {savedBookings &&  savedBookings.map((booking:any, index:any) => (
-    <p id="test" key={index}>
+    <p className="border-l-2 w-2/4 mx-auto border-indigo-700 bg-slate-700/10 p-2  w-auto " key={index}>
          {booking.day + " "} 
       at  {booking.time + "    "}
-        <button onClick={() => deleteBooking(booking)}>Delete</button>
+        <button className="bg-indigo-700 hover:scale-95 transition-all rounded ml-3" onClick={() => deleteBooking(booking)}>Delete</button>
     </p>
 ))}
     {/* {toLocaleString("en-US", options)} */}
-    </>
+    </div>
 )
 }
 export default Bookings

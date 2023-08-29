@@ -49,12 +49,9 @@ const FirstTimeTable = timesArray1.map((number) => {
 
 
     if(daySelected == savedBookings[0].day){
-
-      console.log('we on the right day');
-      
+      console.log('we on the right day');  
     }else{
-     console.log('no on this day');
-     
+     console.log('no on this day'); 
     }
 
     return (

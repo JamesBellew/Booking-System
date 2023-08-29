@@ -8,13 +8,13 @@ import { TextField } from './TextField'
 const App: React.FC = ()=> {
 
   return (
-    <>
-  <div>
+   
+  <div className='container mx-auto'>
 
      <TextField text='hello' i={1} />
      
     </div>
-    </>
+  
   )
 }
 
