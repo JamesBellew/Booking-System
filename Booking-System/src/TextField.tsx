@@ -14,7 +14,7 @@ interface Props{
 }
 const savedBookingsJSON = localStorage.getItem('bookings') as string;
 const savedBookings = JSON.parse(savedBookingsJSON);
-const TimeHai = savedBookings[0].time;
+// const TimeHai = savedBookings[0].time;
 
 
 export const TextField: React.FC<Props> = ()=>{
@@ -168,7 +168,7 @@ localStorage.setItem('bookings', updatedBookingsJSON);
 
 <br></br>
 <div>
-  <button className="bg-indigo-700 cursor-pointer rounded" onClick={userNewBookingHandler}>Book Ndow</button>  
+  <button className="bg-indigo-700 cursor-pointer rounded" onClick={userNewBookingHandler}>Book Now</button>  
 </div>
 </>
 }
