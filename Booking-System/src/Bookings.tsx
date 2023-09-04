@@ -16,7 +16,7 @@ const deleteBooking = (bookingToDelete: any) => {
   // Update local storage with the modified array
   localStorage.setItem('bookings', JSON.stringify(updatedBookings));
   //okay lets try thid
-  // Update state to reflect the change
+  // Update state to reflect the change boiii
   updateSavedBookings(updatedBookings);
 };
 
